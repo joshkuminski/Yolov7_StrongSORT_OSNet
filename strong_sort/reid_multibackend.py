@@ -8,7 +8,8 @@ import pandas as pd
 import gdown
 from os.path import exists as file_exists
 from .deep.reid_model_factory import show_downloadeable_models, get_model_url, get_model_name
-
+import sys
+sys.path.append('Yolov7_StrongSORT_OSNet/strong_sort/deep/reid/deep-person-reid')
 from torchreid.utils import FeatureExtractor
 from torchreid.utils.tools import download_url
 
