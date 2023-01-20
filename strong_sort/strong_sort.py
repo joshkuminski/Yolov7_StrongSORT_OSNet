@@ -74,7 +74,7 @@ class StrongSORT(object):
             id_output.append(np.array([deleted_id]))
         if len(outputs) > 0:
             outputs = np.stack(outputs, axis=0)
-        return outputs, id_output
+        return outputs
 
     """
     TODO:
