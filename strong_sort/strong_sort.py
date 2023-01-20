@@ -57,6 +57,7 @@ class StrongSORT(object):
 
         # output bbox identities
         outputs = []
+        id_output = []
         for track in self.tracker.tracks:
             if not track.is_confirmed() or track.time_since_update > 1:
                 continue
@@ -68,9 +69,12 @@ class StrongSORT(object):
             class_id = track.class_id
             conf = track.conf
             outputs.append(np.array([x1, y1, x2, y2, track_id, class_id, conf]))
+        for del_track in self.tracker.deleted_tracks:
+            deleted_id = del_track.track_id
+            id_output.append(np.array([deleted_id]))
         if len(outputs) > 0:
             outputs = np.stack(outputs, axis=0)
-        return outputs
+        return outputs, id_output
 
     """
     TODO:
