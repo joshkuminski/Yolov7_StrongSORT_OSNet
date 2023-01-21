@@ -69,11 +69,13 @@ class StrongSORT(object):
             class_id = track.class_id
             conf = track.conf
             outputs.append(np.array([x1, y1, x2, y2, track_id, class_id, conf]))
-        for del_track in self.tracker.deleted_tracks:
-            deleted_id = del_track.track_id
-            id_output.append(np.array([deleted_id]))
         if len(outputs) > 0:
             outputs = np.stack(outputs, axis=0)
+
+        #for del_track in self.tracker.deleted_tracks:
+        #    deleted_id = del_track.track_id
+        #    id_output.append(np.array([deleted_id]))
+
         return outputs
 
     """
